@@ -1,4 +1,4 @@
-// Hey Punch Code Hackers! Enjoy!
+// Hey Iron Yard Hackers! Enjoy!
 // Make sure to open your js consoles!
 
 //          __  _ ___ __  _
@@ -36,52 +36,56 @@ function expect(target) {
 //
 // Only add code to *THIS* section!
 
-function Dog(obj) {
- if (obj) {
-   if (obj.hasOwnProperty('status')) {
-     this.status = obj.status
-   } else {
-     this.status = "normal"
-   }
-
-   if (obj.hasOwnProperty('color')) {
-     this.color = obj.color
-   } else {
-     this.color = “white”
-   }
-
-   if (obj.hasOwnProperty('hungry’)) {
-    this.hungry = obj.hungry
-   } else {
-     this.hungry = true
-   }
-
- } else {
-   this.hungry = true
-   this.status = ‘normal’
-   this.color = ‘whites’
- }
+// Dogs accept (param) names
+function Dog(name){
+//they have a (property)status of (value)normal
+  this.status = 'normal'
+//they have a color of black
+  this.color = 'black'
+//if a dog
+  if(name) {
+//has the property hungry
+    if(name.hasOwnProperty('hungry')) {
+//then the dog is hungry
+      this.hungry = name.hungry
+//otherwise
+    }else{
+      this.hungry = true
+    }
+  }
 }
 
-function Human(obj) {
- this.pet = function(name) {
-   name.status = “happy”
- }
- this.feed = function(name) {
-   name.hungry = false
- }
-
- if (obj) {
-   if (obj.hasOwnProperty(‘cool’)) {
-     this.cool = obj.cool
-   } else {
-     this.cool = false
-   }
- } else {
-   this.cool = false
- }
-
+//  Humans accept (param) names
+function Human(name){
+//Humans (fn) can pet pooches
+  this.pet = function(dog){
+//when humans pet, dog status is now happy
+    dog.status = 'happy'
+  }
+  this.feed = function(dog){
+//when humans feed dog, dog is no longer hungry
+    dog.hungry = false
+  }
+  if(name){
+//If a human has the property cool then
+    if(name.hasOwnProperty('cool')) {
+//the person is cool
+      this.cool = name.cool
+//otherwise
+    }else{
+//the person is not cool
+      this.cool = false
+    }
+//otherwise, if they dont have a property cool then
+  }else{
+//set the property cool to false
+    this.cool = false
+  }
 }
+
+
+
+
 
 //        __
 //   ____/ /___  ____ ______
@@ -128,7 +132,7 @@ it("should make Sadie happy when Mason pets her", function(){
   expect(sadie.status).toBe('normal');
   mason.pet(sadie);
   expect(sadie.status).toBe('happy');
-})
+});
 
 it("should make Sadie black", function(){
   expect(sadie.color).toBe('black');
